@@ -4,7 +4,7 @@
 
 PennyPilot is an MCP (Model Context Protocol) extension that connects Claude Desktop to your Pennylane dossiers, directly inside the conversation. It produces a complete monthly closing memo for a client dossier in 8 seconds instead of 1h30, and covers the full general ledger (journals, chart of accounts, per-account ledger view, pending lettering, audit trail) — all read-only, all local, all in plain French for the cabinet collaborator.
 
-Edited by **HOLCO**, Paris, France · v0.2.5 (restricted beta) · pilot active
+Edited by **HOLCO**, Paris, France · v0.2.6 (restricted beta) · pilot active
 
 - **Product page**: https://apps.holco.co/mcp/pennylane
 - **Pilot enrollment**: https://apps.holco.co/mcp/pennylane/cgu
@@ -40,7 +40,7 @@ When you double-click the `.mcpb` bundle, Claude Desktop will show this Anthropi
 1. **Sign up to the pilot** at https://apps.holco.co/mcp/pennylane/cgu (mandatory reading of Terms of Use before the form).
 2. **HOLCO validates manually** — each request is reviewed by hand within 24 hours (pilot is capped at 5 firms during the beta).
 3. **You receive an email** from `alan@holco.co` with your HOLCO license key + the link to download the bundle.
-4. **Drag-drop** the `pennypilot-0.2.5.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
+4. **Drag-drop** the `pennypilot-0.2.6.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
 
 Detailed procedure: [`docs/install.md`](docs/install.md)
 
@@ -68,7 +68,7 @@ Read-only access in v0.2.x. Write operations (lettering, invoicing) planned for 
 
 ---
 
-## Context-guarded analysis (v0.2.5)
+## Context-guarded analysis (v0.2.6)
 
 The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_report`) refuse to run without first establishing the dossier context. They auto-detect SIREN + NAF activity code via Pennylane `/me` + the official French open-data API `recherche-entreprises.api.gouv.fr` (Etalab), then ask the user a single confirmation question about seasonality and accounting particulars before producing any analysis. This avoids false-anomaly reports (e.g. revenue=0 on a seasonal retail dossier where July is naturally low).
 
@@ -108,7 +108,7 @@ See https://apps.holco.co/mcp/pennylane/docs/security for full details. Key poin
 
 ## Roadmap
 
-- **Today**: v0.2.5 — 13 tools, listed on the MCP Registry, pilot ongoing (5 firms)
+- **Today**: v0.2.6 — 13 tools, listed on the MCP Registry, pilot ongoing (5 firms)
 - **Q3 2026**: Streamable HTTP adapters (Mistral Le Chat, ChatGPT Business / Enterprise)
 - **Q4 2026**: Write tools (lettering, invoice creation) with mandatory `preview → commit` pattern
 - **Q1 2027**: Multi-dossier mode (Firm API Token instead of Company Token)

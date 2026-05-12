@@ -1,4 +1,4 @@
-# Install PennyPilot v0.2.5
+# Install PennyPilot v0.2.6
 
 Step-by-step guide for installing the PennyPilot extension inside Claude Desktop.
 
@@ -20,14 +20,14 @@ Step-by-step guide for installing the PennyPilot extension inside Claude Desktop
 
 From your personal access page (link in the welcome email), or directly:
 
-- From the production CDN: https://apps.holco.co/downloads/pennypilot-0.2.5.mcpb
-- From this GitHub Release: https://github.com/holco-apps/pennypilot/releases/download/v0.2.5/pennypilot-0.2.5.mcpb
+- From the production CDN: https://apps.holco.co/downloads/pennypilot-0.2.6.mcpb
+- From this GitHub Release: https://github.com/holco-apps/pennypilot/releases/download/v0.2.6/pennypilot-0.2.6.mcpb
 
-Bundle SHA-256: `d10e8f5df9e7ed56d5e9c8d3fa5ea172ced11026b8cda262ab9b72a647e24809`
+Bundle SHA-256: `7755cc8f82d66313810da689fc1a48ae480b258e771954894a0eb168d14ad4da`
 
 ### 2. Drag-drop into Claude Desktop
 
-- Drag the `pennypilot-0.2.5.mcpb` file onto the Claude Desktop window, OR
+- Drag the `pennypilot-0.2.6.mcpb` file onto the Claude Desktop window, OR
 - Settings → MCP Extensions → Install Extension → select the file
 
 #### ⚠️ Anthropic warning at install

@@ -1,6 +1,6 @@
 {
   "name": "pennypilot",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "PennyPilot — AI copilot for French accounting firms on Pennylane. Monthly close memo in 8 seconds.",
   "type": "module",
   "main": "server.js",
