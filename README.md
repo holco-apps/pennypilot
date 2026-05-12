@@ -38,7 +38,7 @@ Au moment du double-clic sur le bundle `.mcpb`, Claude Desktop affichera ce warn
 1. **Inscrivez-vous au pilote** sur https://apps.holco.co/mcp/pennylane/cgu (lecture obligatoire des CGU avant le formulaire).
 2. **HOLCO valide manuellement** chaque demande sous 24 h (programme pilote restreint à 5 cabinets).
 3. **Vous recevez un email** depuis `alan@holco.co` avec votre clé HOLCO + le lien de téléchargement du bundle.
-4. **Drag-drop** le fichier `pennypilot-0.2.0.mcpb` dans Claude Desktop, saisissez la clé HOLCO + votre token Pennylane v2 → installation en 30 secondes.
+4. **Drag-drop** le fichier `pennypilot-0.2.1.mcpb` dans Claude Desktop, saisissez la clé HOLCO + votre token Pennylane v2 → installation en 30 secondes.
 
 Procédure détaillée : [`docs/install.md`](docs/install.md)
 

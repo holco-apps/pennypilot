@@ -1,4 +1,4 @@
-# Installation — PennyPilot v0.2.0
+# Installation — PennyPilot v0.2.1
 
 Guide d'installation de l'extension PennyPilot dans Claude Desktop.
 
@@ -20,11 +20,11 @@ Guide d'installation de l'extension PennyPilot dans Claude Desktop.
 
 Depuis votre page d'accès personnelle (lien dans l'email d'accueil), ou directement :
 
-https://apps.holco.co/downloads/pennypilot-0.2.0.mcpb
+https://apps.holco.co/downloads/pennypilot-0.2.1.mcpb
 
 ### 2. Drag-drop dans Claude Desktop
 
-- Glissez `pennypilot-0.2.0.mcpb` sur la fenêtre de Claude Desktop, OU
+- Glissez `pennypilot-0.2.1.mcpb` sur la fenêtre de Claude Desktop, OU
 - Settings → MCP Extensions → Install Extension → sélectionnez le fichier
 
 #### ⚠️ Warning Anthropic à l'installation
