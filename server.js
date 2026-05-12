@@ -1,4 +1,4 @@
-// PennyPilot — MCP server v0.2.0 (by HOLCO)
+// PennyPilot — MCP server v0.2.1 (by HOLCO)
 // Le copilote IA pour cabinets Pennylane.
 // Transport stdio (Claude Desktop). Adapter HTTP Mistral en v0.3.
 //
@@ -36,7 +36,7 @@ const HANDLERS = {
 };
 
 const server = new Server(
-  { name: 'pennypilot', version: '0.2.0' },
+  { name: 'pennypilot', version: '0.2.1' },
   { capabilities: { tools: {} } }
 );
 
@@ -78,4 +78,4 @@ try {
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error('[PennyPilot] v0.2.0 by HOLCO — démarré sur stdio.');
+console.error('[PennyPilot] v0.2.1 by HOLCO — démarré sur stdio.');
