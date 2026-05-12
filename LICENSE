@@ -1,0 +1,48 @@
+PennyPilot — License Agreement
+Copyright (c) 2026 HOLCO INVEST. All rights reserved.
+
+This software (the "Software") is the proprietary work of HOLCO INVEST,
+headquartered in Paris, France, and is provided to authorized cabinets and
+their staff under the terms of a separate license agreement between HOLCO
+INVEST and each individual cabinet.
+
+PERMITTED USE
+- Installation and execution by authorized users on their professional
+  workstation as part of their work for a cabinet that has signed a Pennylane
+  Cabinet license agreement with HOLCO INVEST.
+- Internal evaluation by cabinets enrolled in HOLCO INVEST's pilot programme,
+  for the duration agreed in the pilot terms.
+
+PROHIBITED USE
+- Redistribution, sublicensing, sale, or transfer of the Software to any
+  third party.
+- Reverse engineering, decompilation, disassembly, or any attempt to derive
+  the source code, except as permitted by applicable law.
+- Use of the Software outside the scope of an active license agreement or
+  pilot agreement with HOLCO INVEST.
+- Use to access or process data belonging to third parties without those
+  parties' authorisation.
+
+NO WARRANTY
+The Software is provided "AS IS", without warranty of any kind, express or
+implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose, and non-infringement. In no event shall
+HOLCO INVEST be liable for any claim, damages, or other liability arising
+from the use of the Software.
+
+DATA PROCESSING
+The Software runs locally on the user's workstation. No accounting data,
+authentication tokens, or other user data are transmitted to HOLCO INVEST
+or to any HOLCO-controlled server in the course of normal operation.
+
+GOVERNING LAW
+This license is governed by French law. Disputes shall be resolved before
+the competent courts of Paris, France.
+
+CONTACT
+HOLCO INVEST
+Paris, France
+alan@holco.co
+https://holco.co
+
+Last updated: 2026-05-11

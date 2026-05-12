@@ -1,0 +1,31 @@
+{
+  "name": "pennypilot",
+  "version": "0.2.0",
+  "description": "PennyPilot — Le copilote IA pour cabinets Pennylane. Note de synthèse mensuelle en 8 secondes.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "test:auth": "node --env-file=.env -e \"import('./lib/pennylane-client.js').then(m=>m.getMe()).then(r=>console.log(JSON.stringify(r,null,2)))\"",
+    "seed": "node --env-file=.env scripts/seed-le-coq.js",
+    "pack": "bash scripts/build-bundle.sh",
+    "pack:quick": "mcpb pack"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "author": "HOLCO INVEST <alan@holco.co> (https://holco.co)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/holco-apps/pennypilot.git"
+  },
+  "homepage": "https://apps.holco.co/mcp/pennylane",
+  "bugs": "https://github.com/holco-apps/pennypilot/issues",
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2"
+  }
+}

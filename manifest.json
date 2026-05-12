@@ -1,0 +1,64 @@
+{
+  "manifest_version": "0.2",
+  "name": "pennypilot",
+  "display_name": "PennyPilot",
+  "version": "0.2.0",
+  "description": "Le copilote IA pour cabinets Pennylane. Note de synthèse mensuelle en 8 secondes. 1h30 économisée par dossier.",
+  "long_description": "PennyPilot — le copilote IA pour cabinets d'expertise comptable français sur Pennylane. Trois outils accessibles directement dans Claude Desktop.\nTrésorerie clients — Factures clients en retard, résumé chiffré, top 3 clients par montant, alerte automatique pour les retards > 60 jours.\nCompte de résultat synthétique — P&L pour un mois, un trimestre ou une année, comparatif vs période précédente, signalement automatique des anomalies.\nNote de synthèse mensuelle — La note complète prête à coller dans le livrable client : 3 chiffres clés, compte de résultat, trésorerie, top 5 dépenses anormales, doublons fournisseurs, actions cabinet priorisées. 4 tons disponibles.\nSécurité — Votre token Pennylane reste local. Aucune donnée comptable ne transite par HOLCO. Lecture seule en v0.2.\nUn pilote restreint requiert une clé HOLCO : inscription sur apps.holco.co/mcp/pennylane/cgu. Édité par HOLCO INVEST (Paris). Contact : alan@holco.co",
+  "author": {
+    "name": "HOLCO INVEST",
+    "email": "alan@holco.co",
+    "url": "https://holco.co"
+  },
+  "homepage": "https://apps.holco.co/mcp/pennylane",
+  "documentation": "https://apps.holco.co/mcp/pennylane/docs/install",
+  "support": "mailto:alan@holco.co?subject=Support%20PennyPilot",
+  "license": "Proprietary",
+  "icon": "icon.png",
+  "keywords": [
+    "pennypilot",
+    "pennylane",
+    "comptabilité",
+    "expert-comptable",
+    "cabinet",
+    "ai-copilot",
+    "note-de-synthèse",
+    "france",
+    "holco"
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32"],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  },
+  "user_config": {
+    "holco_license_key": {
+      "type": "string",
+      "title": "Clé HOLCO",
+      "description": "Clé reçue par email après inscription sur apps.holco.co/mcp/pennylane/cgu. Format : HOLCO-XXXX-XXXX-XXXX-XXXX.",
+      "required": true,
+      "sensitive": false
+    },
+    "pennylane_token": {
+      "type": "string",
+      "title": "Token API Pennylane v2 (Company Token)",
+      "description": "Token Company API v2 généré sur 1 dossier client précis dans Pennylane : Paramètres > Connectivité > Développeurs > Générer un Token API. Attention : Company Token uniquement (1 token = 1 dossier). Le support Firm Token multi-dossier arrive en v0.3.",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server.js"],
+      "env": {
+        "HOLCO_LICENSE_KEY": "${user_config.holco_license_key}",
+        "PENNYLANE_TOKEN": "${user_config.pennylane_token}"
+      }
+    }
+  }
+}
