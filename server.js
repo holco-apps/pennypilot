@@ -1,4 +1,4 @@
-// PennyPilot — MCP server v0.2.2 (by HOLCO)
+// PennyPilot — MCP server v0.2.3 (by HOLCO)
 // Le copilote IA pour cabinets Pennylane.
 // Transport stdio (Claude Desktop). Adapter HTTP Mistral en v0.3.
 //
@@ -24,6 +24,10 @@ import { listJournals, listJournalsSchema } from './lib/tools/list-journals.js';
 import { getChartOfAccounts, getChartOfAccountsSchema } from './lib/tools/get-chart-of-accounts.js';
 import { browseAccountLedger, browseAccountLedgerSchema } from './lib/tools/browse-account-ledger.js';
 import { findUnletteredEntries, findUnletteredEntriesSchema } from './lib/tools/find-unlettered-entries.js';
+import { browseJournalEntries, browseJournalEntriesSchema } from './lib/tools/browse-journal-entries.js';
+import { getJournalEntryDetail, getJournalEntryDetailSchema } from './lib/tools/get-journal-entry-detail.js';
+import { auditRecentChanges, auditRecentChangesSchema } from './lib/tools/audit-recent-changes.js';
+import { listFiscalYears, listFiscalYearsSchema } from './lib/tools/list-fiscal-years.js';
 
 const TOOLS = [
   aboutPennypilotSchema,
@@ -34,6 +38,10 @@ const TOOLS = [
   getChartOfAccountsSchema,
   browseAccountLedgerSchema,
   findUnletteredEntriesSchema,
+  browseJournalEntriesSchema,
+  getJournalEntryDetailSchema,
+  auditRecentChangesSchema,
+  listFiscalYearsSchema,
 ];
 
 const HANDLERS = {
@@ -45,10 +53,14 @@ const HANDLERS = {
   get_chart_of_accounts: getChartOfAccounts,
   browse_account_ledger: browseAccountLedger,
   find_unlettered_entries: findUnletteredEntries,
+  browse_journal_entries: browseJournalEntries,
+  get_journal_entry_detail: getJournalEntryDetail,
+  audit_recent_changes: auditRecentChanges,
+  list_fiscal_years: listFiscalYears,
 };
 
 const server = new Server(
-  { name: 'pennypilot', version: '0.2.2' },
+  { name: 'pennypilot', version: '0.2.3' },
   { capabilities: { tools: {} } }
 );
 
@@ -90,4 +102,4 @@ try {
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error('[PennyPilot] v0.2.2 by HOLCO — démarré sur stdio.');
+console.error('[PennyPilot] v0.2.3 by HOLCO — démarré sur stdio.');

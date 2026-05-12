@@ -8,13 +8,13 @@
     "source": "github"
   },
   "websiteUrl": "https://apps.holco.co/mcp/pennylane",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.2/pennypilot-0.2.2.mcpb",
-      "fileSha256": "2ed39233dc8d6b5bcdb2d46b184a335eaee18f3d00b271af50741cbcfa10bbd3",
-      "version": "0.2.2",
+      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.3/pennypilot-0.2.3.mcpb",
+      "fileSha256": "c38bd0bd6d9b219965389c7408d2b68f84709f5b40920f5a784103ba2a0d3379",
+      "version": "0.2.3",
       "transport": {
         "type": "stdio"
       }
