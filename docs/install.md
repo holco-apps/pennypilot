@@ -38,7 +38,7 @@ Claude Desktop affichera ce message :
 **Sources de confiance vérifiables :**
 
 - Code source : https://github.com/holco-apps/pennypilot (public, vous y êtes)
-- Société : HOLCO INVEST, immatriculée à Paris (France)
+- Société : HOLCO, immatriculée à Paris (France)
 - Contact direct : alan@holco.co
 - Documentation sécurité : https://apps.holco.co/mcp/pennylane/docs/security
 

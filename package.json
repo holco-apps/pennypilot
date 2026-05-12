@@ -17,7 +17,7 @@
   "engines": {
     "node": ">=20"
   },
-  "author": "HOLCO INVEST <alan@holco.co> (https://holco.co)",
+  "author": "HOLCO <alan@holco.co> (https://holco.co)",
   "repository": {
     "type": "git",
     "url": "https://github.com/holco-apps/pennypilot.git"

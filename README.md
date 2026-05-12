@@ -4,7 +4,7 @@
 
 Extension MCP (Model Context Protocol) qui se branche à Claude Desktop et expose l'API Pennylane v2 comme outils accessibles à la conversation IA du collaborateur. Production de la note de synthèse mensuelle d'un dossier client en 8 secondes au lieu de 1h30.
 
-Édité par **HOLCO INVEST**, Paris · v0.2.0 (béta restreinte) · pilote en cours
+Édité par **HOLCO**, Paris · v0.2.0 (béta restreinte) · pilote en cours
 
 - **Page produit** : https://apps.holco.co/mcp/pennylane
 - **Inscription pilote** : https://apps.holco.co/mcp/pennylane/cgu
@@ -26,7 +26,7 @@ Au moment du double-clic sur le bundle `.mcpb`, Claude Desktop affichera ce warn
 | | |
 |---|---|
 | Code source (ce repo) | [github.com/holco-apps/pennypilot](https://github.com/holco-apps/pennypilot) (public) |
-| Société éditrice | **HOLCO INVEST**, immatriculée à Paris (France) |
+| Société éditrice | **HOLCO**, immatriculée à Paris (France) |
 | Contact direct | alan@holco.co |
 | Documentation sécurité | [apps.holco.co/mcp/pennylane/docs/security](https://apps.holco.co/mcp/pennylane/docs/security) |
 | Procédure RGPD | [apps.holco.co/mcp/pennylane/cgu](https://apps.holco.co/mcp/pennylane/cgu) |
@@ -36,7 +36,7 @@ Au moment du double-clic sur le bundle `.mcpb`, Claude Desktop affichera ce warn
 ## Pour installer (utilisateur final cabinet)
 
 1. **Inscrivez-vous au pilote** sur https://apps.holco.co/mcp/pennylane/cgu (lecture obligatoire des CGU avant le formulaire).
-2. **HOLCO INVEST valide manuellement** chaque demande sous 24 h (programme pilote restreint à 5 cabinets).
+2. **HOLCO valide manuellement** chaque demande sous 24 h (programme pilote restreint à 5 cabinets).
 3. **Vous recevez un email** depuis `alan@holco.co` avec votre clé HOLCO + le lien de téléchargement du bundle.
 4. **Drag-drop** le fichier `pennypilot-0.2.0.mcpb` dans Claude Desktop, saisissez la clé HOLCO + votre token Pennylane v2 → installation en 30 secondes.
 
@@ -90,7 +90,7 @@ Voir https://apps.holco.co/mcp/pennylane/docs/security pour le détail. Points c
 
 ## Licence
 
-Propriétaire — voir [`LICENSE`](LICENSE). Reverse engineering, redistribution et exploitation commerciale interdits sauf accord écrit HOLCO INVEST.
+Propriétaire — voir [`LICENSE`](LICENSE). Reverse engineering, redistribution et exploitation commerciale interdits sauf accord écrit HOLCO.
 
 ---
 
@@ -100,4 +100,4 @@ Propriétaire — voir [`LICENSE`](LICENSE). Reverse engineering, redistribution
 - **Commercial / partenariats** : alan@holco.co
 - **Issues techniques** : ouvrir un GitHub Issue sur ce repo
 
-HOLCO INVEST · Paris, France · https://holco.co
+HOLCO · Paris, France · https://holco.co
