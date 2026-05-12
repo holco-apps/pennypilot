@@ -1,4 +1,4 @@
-// PennyPilot — MCP server v0.2.3 (by HOLCO)
+// PennyPilot — MCP server v0.2.4 (by HOLCO)
 // Le copilote IA pour cabinets Pennylane.
 // Transport stdio (Claude Desktop). Adapter HTTP Mistral en v0.3.
 //
@@ -28,6 +28,7 @@ import { browseJournalEntries, browseJournalEntriesSchema } from './lib/tools/br
 import { getJournalEntryDetail, getJournalEntryDetailSchema } from './lib/tools/get-journal-entry-detail.js';
 import { auditRecentChanges, auditRecentChangesSchema } from './lib/tools/audit-recent-changes.js';
 import { listFiscalYears, listFiscalYearsSchema } from './lib/tools/list-fiscal-years.js';
+import { sendFeedback, sendFeedbackSchema } from './lib/tools/send-feedback.js';
 
 const TOOLS = [
   aboutPennypilotSchema,
@@ -42,6 +43,7 @@ const TOOLS = [
   getJournalEntryDetailSchema,
   auditRecentChangesSchema,
   listFiscalYearsSchema,
+  sendFeedbackSchema,
 ];
 
 const HANDLERS = {
@@ -57,10 +59,11 @@ const HANDLERS = {
   get_journal_entry_detail: getJournalEntryDetail,
   audit_recent_changes: auditRecentChanges,
   list_fiscal_years: listFiscalYears,
+  send_feedback_to_holco: sendFeedback,
 };
 
 const server = new Server(
-  { name: 'pennypilot', version: '0.2.3' },
+  { name: 'pennypilot', version: '0.2.4' },
   { capabilities: { tools: {} } }
 );
 
@@ -102,4 +105,4 @@ try {
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error('[PennyPilot] v0.2.3 by HOLCO — démarré sur stdio.');
+console.error('[PennyPilot] v0.2.4 by HOLCO — démarré sur stdio.');
