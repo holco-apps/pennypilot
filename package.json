@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node --env-file=.env server.js",
-    "test": "node --test 'test/*.test.js'",
+    "test": "node --test test/*.test.js",
     "test:auth": "node --env-file=.env -e \"import('./lib/pennylane-client.js').then(m=>m.getMe()).then(r=>console.log(JSON.stringify(r,null,2)))\"",
     "pack": "bash scripts/build-bundle.sh",
     "pack:quick": "mcpb pack"
