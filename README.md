@@ -120,3 +120,4 @@ Proprietary — see [`LICENSE`](LICENSE). Reverse engineering, redistribution, a
 - **Technical issues**: open a GitHub Issue on this repo
 
 HOLCO · Paris, France · https://holco.co
+
