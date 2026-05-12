@@ -1,4 +1,4 @@
-// PennyPilot — MCP server v0.2.4 (by HOLCO)
+// PennyPilot — MCP server (HOLCO)
 // Le copilote IA pour cabinets Pennylane.
 // Transport stdio (Claude Desktop). Adapter HTTP Mistral en v0.3.
 //
@@ -15,6 +15,8 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 
+import { VERSION } from './lib/version.js';
+import { log } from './lib/logger.js';
 import { assertHolcoLicense } from './lib/holco-license.js';
 import { aboutPennypilot, aboutPennypilotSchema } from './lib/tools/about-pennypilot.js';
 import { findUnpaidInvoices, findUnpaidInvoicesSchema } from './lib/tools/find-unpaid-invoices.js';
@@ -63,7 +65,7 @@ const HANDLERS = {
 };
 
 const server = new Server(
-  { name: 'pennypilot', version: '0.2.4' },
+  { name: 'pennypilot', version: VERSION },
   { capabilities: { tools: {} } }
 );
 
@@ -97,12 +99,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 // Si invalide / absente / HOLCO server down sans cache : refus de démarrer.
 try {
   await assertHolcoLicense();
-  console.error('[PennyPilot] Clé HOLCO validée.');
+  log.info('license.ok');
 } catch (err) {
-  console.error(`[PennyPilot] ❌ ${err.message}`);
+  log.error('license.invalid', { err: err.message });
   process.exit(1);
 }
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error('[PennyPilot] v0.2.4 by HOLCO — démarré sur stdio.');
+log.info('server.started', { transport: 'stdio' });

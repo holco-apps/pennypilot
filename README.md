@@ -4,7 +4,7 @@
 
 PennyPilot is an MCP (Model Context Protocol) extension that connects Claude Desktop to your Pennylane dossiers, directly inside the conversation. It produces a complete monthly closing memo for a client dossier in 8 seconds instead of 1h30, and covers the full general ledger (journals, chart of accounts, per-account ledger view, pending lettering, audit trail) — all read-only, all local, all in plain French for the cabinet collaborator.
 
-Edited by **HOLCO**, Paris, France · v0.2.4 (restricted beta) · pilot active
+Edited by **HOLCO**, Paris, France · v0.2.5 (restricted beta) · pilot active
 
 - **Product page**: https://apps.holco.co/mcp/pennylane
 - **Pilot enrollment**: https://apps.holco.co/mcp/pennylane/cgu
@@ -40,13 +40,13 @@ When you double-click the `.mcpb` bundle, Claude Desktop will show this Anthropi
 1. **Sign up to the pilot** at https://apps.holco.co/mcp/pennylane/cgu (mandatory reading of Terms of Use before the form).
 2. **HOLCO validates manually** — each request is reviewed by hand within 24 hours (pilot is capped at 5 firms during the beta).
 3. **You receive an email** from `alan@holco.co` with your HOLCO license key + the link to download the bundle.
-4. **Drag-drop** the `pennypilot-0.2.4.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
+4. **Drag-drop** the `pennypilot-0.2.5.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
 
 Detailed procedure: [`docs/install.md`](docs/install.md)
 
 ---
 
-## Thirteen tools (v0.2.4)
+## Thirteen tools
 
 | Tool | Role |
 |---|---|
@@ -68,7 +68,7 @@ Read-only access in v0.2.x. Write operations (lettering, invoicing) planned for 
 
 ---
 
-## Context-guarded analysis (v0.2.4)
+## Context-guarded analysis (v0.2.5)
 
 The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_report`) refuse to run without first establishing the dossier context. They auto-detect SIREN + NAF activity code via Pennylane `/me` + the official French open-data API `recherche-entreprises.api.gouv.fr` (Etalab), then ask the user a single confirmation question about seasonality and accounting particulars before producing any analysis. This avoids false-anomaly reports (e.g. revenue=0 on a seasonal retail dossier where July is naturally low).
 
@@ -81,6 +81,15 @@ The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_repo
 - **Pennylane token**: stored as a Claude Desktop environment variable on the user's workstation, **never transmitted to HOLCO**
 - **HOLCO license key**: only the SHA-256 hash is consulted, against the public registry at [apps.holco.co/api/licenses.json](https://apps.holco.co/api/licenses.json)
 - **No accounting data** transits HOLCO infrastructure — the extension talks directly from the user's workstation to the Pennylane v2 API
+
+### Engineering
+
+- **Three-layer architecture**: `server.js` (MCP routing) → `lib/tools/*.js` (schemas + handlers) → `lib/pennylane-client.js` (HTTP, retry, pagination)
+- **Cursor pagination factored** in a single `paginate()` async generator with explicit `maxPages` cap (no silent truncation)
+- **Structured JSON logging** via `lib/logger.js` (stderr, levels `debug|info|warn|error`, configurable via `PENNYPILOT_LOG_LEVEL`)
+- **Single `VERSION` source** read from `manifest.json` at boot, propagated to User-Agent and feedback payloads
+- **Tests**: `node:test` (zero-dependency) on period parsing, NAF mapping, error humanization, pagination. Run with `npm test`.
+- **CI**: GitHub Actions runs tests on Node 20 + 22, checks version consistency between `manifest.json` and `package.json`, builds the `.mcpb` bundle as a release artifact
 
 ---
 
@@ -99,7 +108,7 @@ See https://apps.holco.co/mcp/pennylane/docs/security for full details. Key poin
 
 ## Roadmap
 
-- **Today**: v0.2.4 — 13 tools, listed on the MCP Registry, pilot ongoing (5 firms)
+- **Today**: v0.2.5 — 13 tools, listed on the MCP Registry, pilot ongoing (5 firms)
 - **Q3 2026**: Streamable HTTP adapters (Mistral Le Chat, ChatGPT Business / Enterprise)
 - **Q4 2026**: Write tools (lettering, invoice creation) with mandatory `preview → commit` pattern
 - **Q1 2027**: Multi-dossier mode (Firm API Token instead of Company Token)
