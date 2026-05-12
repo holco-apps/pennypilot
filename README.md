@@ -1,103 +1,122 @@
 # PennyPilot
 
-**Le copilote IA pour cabinets d'expertise comptable sur Pennylane.**
+**The AI copilot for French accounting firms (cabinets d'expertise comptable) on Pennylane.**
 
-Extension MCP (Model Context Protocol) qui se branche à Claude Desktop et expose l'API Pennylane v2 comme outils accessibles à la conversation IA du collaborateur. Production de la note de synthèse mensuelle d'un dossier client en 8 secondes au lieu de 1h30.
+PennyPilot is an MCP (Model Context Protocol) extension that connects Claude Desktop to your Pennylane dossiers, directly inside the conversation. It produces a complete monthly closing memo for a client dossier in 8 seconds instead of 1h30, and covers the full general ledger (journals, chart of accounts, per-account ledger view, pending lettering, audit trail) — all read-only, all local, all in plain French for the cabinet collaborator.
 
-Édité par **HOLCO**, Paris · v0.2.0 (béta restreinte) · pilote en cours
+Edited by **HOLCO**, Paris, France · v0.2.4 (restricted beta) · pilot active
 
-- **Page produit** : https://apps.holco.co/mcp/pennylane
-- **Inscription pilote** : https://apps.holco.co/mcp/pennylane/cgu
-- **Sécurité & RGPD** : https://apps.holco.co/mcp/pennylane/docs/security
-- **Contact** : alan@holco.co
+- **Product page**: https://apps.holco.co/mcp/pennylane
+- **Pilot enrollment**: https://apps.holco.co/mcp/pennylane/cgu
+- **Security & GDPR**: https://apps.holco.co/mcp/pennylane/docs/security
+- **MCP Registry**: https://registry.modelcontextprotocol.io/?search=pennypilot (`io.github.holco-apps/pennypilot`)
+- **Contact**: alan@holco.co
 
 ---
 
-## ⚠️ À l'installation, ce que Claude Desktop affichera
+## ⚠️ What Claude Desktop will display at install
 
-Au moment du double-clic sur le bundle `.mcpb`, Claude Desktop affichera ce warning d'Anthropic :
+When you double-click the `.mcpb` bundle, Claude Desktop will show this Anthropic warning:
 
-> « Les informations sur le développeur affichées n'ont pas été vérifiées par Anthropic. »
+> *"The developer information shown has not been verified by Anthropic."*
 
-**C'est normal.** Toutes les extensions tierces non listées dans le directory officiel Anthropic affichent ce message, indépendamment de leur qualité. PennyPilot a été soumis au directory officiel Anthropic — la vérification est en cours (Q3 2026).
+**This is normal.** All third-party extensions not yet listed in Anthropic's official directory display this message, regardless of their quality. PennyPilot was submitted to the official Anthropic Connectors Directory — review is in progress (Q3 2026 target).
 
-**Sources de confiance vérifiables :**
+**Verifiable trust signals:**
 
 | | |
 |---|---|
-| Code source (ce repo) | [github.com/holco-apps/pennypilot](https://github.com/holco-apps/pennypilot) (public) |
-| Société éditrice | **HOLCO**, immatriculée à Paris (France) |
-| Contact direct | alan@holco.co |
-| Documentation sécurité | [apps.holco.co/mcp/pennylane/docs/security](https://apps.holco.co/mcp/pennylane/docs/security) |
-| Procédure RGPD | [apps.holco.co/mcp/pennylane/cgu](https://apps.holco.co/mcp/pennylane/cgu) |
+| Source code (this repo) | [github.com/holco-apps/pennypilot](https://github.com/holco-apps/pennypilot) (public) |
+| Editor | **HOLCO**, registered in Paris (France) |
+| Direct contact | alan@holco.co |
+| Security documentation | [apps.holco.co/mcp/pennylane/docs/security](https://apps.holco.co/mcp/pennylane/docs/security) |
+| Pilot Terms of Use | [apps.holco.co/mcp/pennylane/cgu](https://apps.holco.co/mcp/pennylane/cgu) |
+| MCP Server Registry listing | [registry.modelcontextprotocol.io](https://registry.modelcontextprotocol.io/?search=pennypilot) (status active) |
 
 ---
 
-## Pour installer (utilisateur final cabinet)
+## Install (end-user firm)
 
-1. **Inscrivez-vous au pilote** sur https://apps.holco.co/mcp/pennylane/cgu (lecture obligatoire des CGU avant le formulaire).
-2. **HOLCO valide manuellement** chaque demande sous 24 h (programme pilote restreint à 5 cabinets).
-3. **Vous recevez un email** depuis `alan@holco.co` avec votre clé HOLCO + le lien de téléchargement du bundle.
-4. **Drag-drop** le fichier `pennypilot-0.2.1.mcpb` dans Claude Desktop, saisissez la clé HOLCO + votre token Pennylane v2 → installation en 30 secondes.
+1. **Sign up to the pilot** at https://apps.holco.co/mcp/pennylane/cgu (mandatory reading of Terms of Use before the form).
+2. **HOLCO validates manually** — each request is reviewed by hand within 24 hours (pilot is capped at 5 firms during the beta).
+3. **You receive an email** from `alan@holco.co` with your HOLCO license key + the link to download the bundle.
+4. **Drag-drop** the `pennypilot-0.2.4.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
 
-Procédure détaillée : [`docs/install.md`](docs/install.md)
+Detailed procedure: [`docs/install.md`](docs/install.md)
 
 ---
 
-## Tools exposés (v0.2)
+## Thirteen tools (v0.2.4)
 
-| Tool | Rôle |
+| Tool | Role |
 |---|---|
-| `find_unpaid_customer_invoices(days_overdue, company_id?)` | Résumé chiffré + top 20 factures clients en retard |
-| `get_company_pnl(period, company_id?)` | P&L synthétique mois/trimestre/année, comparatif vs N-1 |
-| `generate_monthly_close_report(company_id, month, tone?)` | Note de synthèse mensuelle complète (playbook 6 sections) |
+| `about_pennypilot` | Welcome card listing tools and usage hints — triggered when the user starts a conversation |
+| `find_unpaid_customer_invoices` | Overdue customer invoices, top 3 debtors, 60-day alert |
+| `get_company_pnl` | Synthetic P&L for a month / quarter / year, comparison vs prior period, anomalies flagged |
+| `generate_monthly_close_report` | Complete monthly closing memo (KPIs, P&L commentary, AR aging, anomalous spend, vendor duplicates, prioritized cabinet actions) — 4 tones |
+| `list_journals` | Accounting journals configured on the dossier (sales / purchases / bank / general / cash) |
+| `get_chart_of_accounts` | Chart of accounts grouped by French PCG class (1–8), filterable by prefix |
+| `browse_account_ledger` | General ledger view of a single account over a period, with running balance |
+| `find_unlettered_entries` | Pending lettering on customer (411\*) / supplier (401\*) accounts, ranked by amount + age |
+| `browse_journal_entries` | Ledger entries over a period, optionally filtered by journal code |
+| `get_journal_entry_detail` | Full detail of a single entry: header, all debit/credit lines, balance check, lettering state |
+| `audit_recent_changes` | Audit trail of recent modifications (compliance) |
+| `list_fiscal_years` | Fiscal years configured on the company (open / closing / closed) |
+| `send_feedback_to_holco` | Feedback channel triggered by typing `@holco` in the conversation — sends bug / idea / comment / question to HOLCO |
 
-Lecture seule en v0.2. Les outils d'écriture (lettrage, génération de facture, validation `preview → commit` obligatoire) arrivent en Q4 2026.
+Read-only access in v0.2.x. Write operations (lettering, invoicing) planned for v0.4 (Q4 2026) with a mandatory preview → commit pattern (zero modification without explicit user validation).
+
+---
+
+## Context-guarded analysis (v0.2.4)
+
+The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_report`) refuse to run without first establishing the dossier context. They auto-detect SIREN + NAF activity code via Pennylane `/me` + the official French open-data API `recherche-entreprises.api.gouv.fr` (Etalab), then ask the user a single confirmation question about seasonality and accounting particulars before producing any analysis. This avoids false-anomaly reports (e.g. revenue=0 on a seasonal retail dossier where July is naturally low).
 
 ---
 
 ## Architecture
 
-- **Runtime** : Node.js ≥ 20, transport stdio (Claude Desktop) ou Streamable HTTP (Mistral Le Chat, ChatGPT Business — v0.3)
-- **Distribution** : bundle `.mcpb` (convention Anthropic) téléchargé depuis apps.holco.co après inscription pilote
-- **Token Pennylane** : stocké comme variable d'environnement Claude Desktop sur le poste du collaborateur, **jamais transmis à HOLCO**
-- **Clé HOLCO** : sert uniquement à valider l'éligibilité au pilote. Seul le hash SHA-256 est consulté contre le registre public [apps.holco.co/api/licenses.json](https://apps.holco.co/api/licenses.json)
-- **Aucune donnée comptable** ne transite par les serveurs HOLCO — l'extension parle directement à l'API Pennylane v2
+- **Runtime**: Node.js ≥ 20, stdio transport (Claude Desktop) or Streamable HTTP (Mistral Le Chat, ChatGPT Business — coming v0.3)
+- **Distribution**: `.mcpb` bundle (Anthropic format), downloaded from `apps.holco.co` after pilot enrollment, or directly from this repo's GitHub Releases
+- **Pennylane token**: stored as a Claude Desktop environment variable on the user's workstation, **never transmitted to HOLCO**
+- **HOLCO license key**: only the SHA-256 hash is consulted, against the public registry at [apps.holco.co/api/licenses.json](https://apps.holco.co/api/licenses.json)
+- **No accounting data** transits HOLCO infrastructure — the extension talks directly from the user's workstation to the Pennylane v2 API
 
 ---
 
-## Sécurité
+## Security
 
-Voir https://apps.holco.co/mcp/pennylane/docs/security pour le détail. Points clés :
+See https://apps.holco.co/mcp/pennylane/docs/security for full details. Key points:
 
-- ✓ Aucune donnée comptable côté HOLCO
-- ✓ Token Pennylane local (variable d'env Claude Desktop)
-- ✓ Lecture seule stricte en v0.2
-- ✓ Pas d'entraînement IA (opt-out contractuel Anthropic)
-- ✓ Compatible AI Act européen (UE 2024/1689)
-
----
-
-## Statut
-
-- **Aujourd'hui** : v0.2.0 disponible, pilote restreint en cours (5 cabinets max)
-- **Q3 2026** : adapters Streamable HTTP (Mistral Le Chat, ChatGPT Business)
-- **Q4 2026** : outils d'écriture (lettrage, facturation) avec validation systématique
-- **Q1 2027** : Firm Token multi-dossier
-- **Q3 2026** : vérification officielle au directory Anthropic (soumission faite)
+- ✓ No accounting data on HOLCO side
+- ✓ Pennylane token stays local (Claude Desktop env var)
+- ✓ Strict read-only enforcement in v0.2.x
+- ✓ No AI training on accounting data (contractual opt-out with Anthropic)
+- ✓ GDPR compliant — controller is the firm; HOLCO provides software only
+- ✓ Compatible with EU AI Act (UE 2024/1689)
 
 ---
 
-## Licence
+## Roadmap
 
-Propriétaire — voir [`LICENSE`](LICENSE). Reverse engineering, redistribution et exploitation commerciale interdits sauf accord écrit HOLCO.
+- **Today**: v0.2.4 — 13 tools, listed on the MCP Registry, pilot ongoing (5 firms)
+- **Q3 2026**: Streamable HTTP adapters (Mistral Le Chat, ChatGPT Business / Enterprise)
+- **Q4 2026**: Write tools (lettering, invoice creation) with mandatory `preview → commit` pattern
+- **Q1 2027**: Multi-dossier mode (Firm API Token instead of Company Token)
+- **Q3 2026 target**: Anthropic Connectors Directory verification (submission made)
+
+---
+
+## License
+
+Proprietary — see [`LICENSE`](LICENSE). Reverse engineering, redistribution, and commercial exploitation are forbidden without HOLCO's prior written consent.
 
 ---
 
 ## Contact
 
-- **Questions produit, installation, support** : alan@holco.co
-- **Commercial / partenariats** : alan@holco.co
-- **Issues techniques** : ouvrir un GitHub Issue sur ce repo
+- **Product questions, install, support**: alan@holco.co
+- **Commercial / partnerships**: alan@holco.co
+- **Technical issues**: open a GitHub Issue on this repo
 
 HOLCO · Paris, France · https://holco.co
