@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.holco-apps/pennypilot",
+  "title": "PennyPilot",
+  "description": "Le copilote IA pour cabinets d'expertise comptable français sur Pennylane. Note de synthèse mensuelle en 8 secondes, 1h30 économisée par dossier. Trois outils en lecture seule (factures clients en retard, P&L synthétique, note de synthèse mensuelle complète). Édité par HOLCO (Paris).",
+  "repository": {
+    "url": "https://github.com/holco-apps/pennypilot",
+    "source": "github"
+  },
+  "websiteUrl": "https://apps.holco.co/mcp/pennylane",
+  "version": "0.2.1",
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.1/pennypilot-0.2.1.mcpb",
+      "fileSha256": "b5e0d2d3aa3239770a75d68e385b890d49ec7cbf72e4fa1a5aa35ce38639d04a",
+      "version": "0.2.1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
