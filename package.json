@@ -1,6 +1,6 @@
 {
   "name": "pennypilot",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "PennyPilot — Le copilote IA pour cabinets Pennylane. Note de synthèse mensuelle en 8 secondes.",
   "type": "module",
   "main": "server.js",

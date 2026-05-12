@@ -1,4 +1,4 @@
-// PennyPilot — MCP server v0.2.1 (by HOLCO)
+// PennyPilot — MCP server v0.2.2 (by HOLCO)
 // Le copilote IA pour cabinets Pennylane.
 // Transport stdio (Claude Desktop). Adapter HTTP Mistral en v0.3.
 //
@@ -20,12 +20,20 @@ import { aboutPennypilot, aboutPennypilotSchema } from './lib/tools/about-pennyp
 import { findUnpaidInvoices, findUnpaidInvoicesSchema } from './lib/tools/find-unpaid-invoices.js';
 import { getCompanyPnl, getCompanyPnlSchema } from './lib/tools/get-company-pnl.js';
 import { generateMonthlyClose, generateMonthlyCloseSchema } from './lib/tools/generate-monthly-close.js';
+import { listJournals, listJournalsSchema } from './lib/tools/list-journals.js';
+import { getChartOfAccounts, getChartOfAccountsSchema } from './lib/tools/get-chart-of-accounts.js';
+import { browseAccountLedger, browseAccountLedgerSchema } from './lib/tools/browse-account-ledger.js';
+import { findUnletteredEntries, findUnletteredEntriesSchema } from './lib/tools/find-unlettered-entries.js';
 
 const TOOLS = [
   aboutPennypilotSchema,
   findUnpaidInvoicesSchema,
   getCompanyPnlSchema,
   generateMonthlyCloseSchema,
+  listJournalsSchema,
+  getChartOfAccountsSchema,
+  browseAccountLedgerSchema,
+  findUnletteredEntriesSchema,
 ];
 
 const HANDLERS = {
@@ -33,10 +41,14 @@ const HANDLERS = {
   find_unpaid_customer_invoices: findUnpaidInvoices,
   get_company_pnl: getCompanyPnl,
   generate_monthly_close_report: generateMonthlyClose,
+  list_journals: listJournals,
+  get_chart_of_accounts: getChartOfAccounts,
+  browse_account_ledger: browseAccountLedger,
+  find_unlettered_entries: findUnletteredEntries,
 };
 
 const server = new Server(
-  { name: 'pennypilot', version: '0.2.1' },
+  { name: 'pennypilot', version: '0.2.2' },
   { capabilities: { tools: {} } }
 );
 
@@ -78,4 +90,4 @@ try {
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error('[PennyPilot] v0.2.1 by HOLCO — démarré sur stdio.');
+console.error('[PennyPilot] v0.2.2 by HOLCO — démarré sur stdio.');
