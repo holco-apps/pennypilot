@@ -16,17 +16,20 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 
 import { assertHolcoLicense } from './lib/holco-license.js';
+import { aboutPennypilot, aboutPennypilotSchema } from './lib/tools/about-pennypilot.js';
 import { findUnpaidInvoices, findUnpaidInvoicesSchema } from './lib/tools/find-unpaid-invoices.js';
 import { getCompanyPnl, getCompanyPnlSchema } from './lib/tools/get-company-pnl.js';
 import { generateMonthlyClose, generateMonthlyCloseSchema } from './lib/tools/generate-monthly-close.js';
 
 const TOOLS = [
+  aboutPennypilotSchema,
   findUnpaidInvoicesSchema,
   getCompanyPnlSchema,
   generateMonthlyCloseSchema,
 ];
 
 const HANDLERS = {
+  about_pennypilot: aboutPennypilot,
   find_unpaid_customer_invoices: findUnpaidInvoices,
   get_company_pnl: getCompanyPnl,
   generate_monthly_close_report: generateMonthlyClose,
