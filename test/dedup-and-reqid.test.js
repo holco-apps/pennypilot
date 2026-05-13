@@ -47,14 +47,33 @@ test('different URLs are NOT deduped', async () => {
   assert.equal(m.calls(), 3);
 });
 
-test('POST is not deduped (writes are independent)', async () => {
+test('READ_ONLY_GUARD: POST is rejected before reaching the network', async () => {
   process.env.PENNYLANE_TOKEN = 'mock';
-  const m = setupFetchMock({ body: { ok: true }, delayMs: 10 });
-  await Promise.all([
+  let fetched = false;
+  globalThis.fetch = async () => {
+    fetched = true;
+    return {
+      ok: true, status: 200,
+      headers: { get: () => null },
+      json: async () => ({}), text: async () => '',
+    };
+  };
+  await assert.rejects(
     pnlFetch('/customer_invoices', { method: 'POST', body: '{}' }),
-    pnlFetch('/customer_invoices', { method: 'POST', body: '{}' }),
-  ]);
-  assert.equal(m.calls(), 2);
+    /READ_ONLY_GUARD/,
+  );
+  assert.equal(fetched, false, 'fetch must not be called when a write method is blocked');
+});
+
+test('READ_ONLY_GUARD: PUT / PATCH / DELETE are all rejected', async () => {
+  process.env.PENNYLANE_TOKEN = 'mock';
+  for (const method of ['PUT', 'PATCH', 'DELETE']) {
+    await assert.rejects(
+      pnlFetch('/x', { method }),
+      /READ_ONLY_GUARD/,
+      `expected ${method} to be rejected`,
+    );
+  }
 });
 
 test('client X-Request-Id is sent on every call, format pp-<hex>', async () => {
