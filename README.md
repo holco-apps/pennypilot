@@ -4,7 +4,7 @@
 
 PennyPilot is an MCP (Model Context Protocol) extension that connects Claude Desktop to your Pennylane dossiers, directly inside the conversation. It produces a complete monthly closing memo for a client dossier in 8 seconds instead of 1h30, and covers the full general ledger (journals, chart of accounts, per-account ledger view, pending lettering, audit trail) — all read-only, all local, all in plain French for the cabinet collaborator.
 
-Edited by **HOLCO**, Paris, France · v0.2.6 (restricted beta) · pilot active
+Edited by **HOLCO**, Paris, France · v0.2.7 (restricted beta) · pilot active
 
 - **Product page**: https://apps.holco.co/mcp/pennylane
 - **Pilot enrollment**: https://apps.holco.co/mcp/pennylane/cgu
@@ -40,7 +40,7 @@ When you double-click the `.mcpb` bundle, Claude Desktop will show this Anthropi
 1. **Sign up to the pilot** at https://apps.holco.co/mcp/pennylane/cgu (mandatory reading of Terms of Use before the form).
 2. **HOLCO validates manually** — each request is reviewed by hand within 24 hours (pilot is capped at 5 firms during the beta).
 3. **You receive an email** from `alan@holco.co` with your HOLCO license key + the link to download the bundle.
-4. **Drag-drop** the `pennypilot-0.2.6.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
+4. **Drag-drop** the `pennypilot-0.2.7.mcpb` file into Claude Desktop, enter your HOLCO key + your Pennylane Company API v2 token → 30-second install.
 
 Detailed procedure: [`docs/install.md`](docs/install.md)
 
@@ -64,11 +64,11 @@ Detailed procedure: [`docs/install.md`](docs/install.md)
 | `list_fiscal_years` | Fiscal years configured on the company (open / closing / closed) |
 | `send_feedback_to_holco` | Feedback channel triggered by typing `@holco` in the conversation — sends bug / idea / comment / question to HOLCO |
 
-Read-only access in v0.2.x. Write operations (lettering, invoicing) planned for v0.4 (Q4 2026) with a mandatory preview → commit pattern (zero modification without explicit user validation).
+Read-only by design. PennyPilot will never create, modify, delete, letter, draft, or post anything in your Pennylane dossiers. The code-level `READ_ONLY_GUARD` rejects every non-read HTTP method before any request can reach Pennylane.
 
 ---
 
-## Context-guarded analysis (v0.2.6)
+## Context-guarded analysis (v0.2.7)
 
 The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_report`) refuse to run without first establishing the dossier context. They auto-detect SIREN + NAF activity code via Pennylane `/me` + the official French open-data API `recherche-entreprises.api.gouv.fr` (Etalab), then ask the user a single confirmation question about seasonality and accounting particulars before producing any analysis. This avoids false-anomaly reports (e.g. revenue=0 on a seasonal retail dossier where July is naturally low).
 
@@ -76,7 +76,7 @@ The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_repo
 
 ## Architecture
 
-- **Runtime**: Node.js ≥ 20, stdio transport (Claude Desktop) or Streamable HTTP (Mistral Le Chat, ChatGPT Business — coming v0.3)
+- **Runtime**: Node.js >= 20, stdio transport (Claude Desktop). A hosted HOLCO Streamable HTTP variant for Mistral Le Chat and ChatGPT Business is planned, still read-only.
 - **Distribution**: `.mcpb` bundle (Anthropic format), downloaded from `apps.holco.co` after pilot enrollment, or directly from this repo's GitHub Releases
 - **Pennylane token**: stored as a Claude Desktop environment variable on the user's workstation, **never transmitted to HOLCO**
 - **HOLCO license key**: only the SHA-256 hash is consulted, against the public registry at [apps.holco.co/api/licenses.json](https://apps.holco.co/api/licenses.json)
@@ -99,7 +99,7 @@ See https://apps.holco.co/mcp/pennylane/docs/security for full details. Key poin
 
 - ✓ No accounting data on HOLCO side
 - ✓ Pennylane token stays local (Claude Desktop env var)
-- ✓ Strict read-only enforcement in v0.2.x
+- ✓ Read-only by design — no write capability in the product roadmap
 - ✓ No AI training on accounting data (contractual opt-out with Anthropic)
 - ✓ GDPR compliant — controller is the firm; HOLCO provides software only
 - ✓ Compatible with EU AI Act (UE 2024/1689)
@@ -108,10 +108,11 @@ See https://apps.holco.co/mcp/pennylane/docs/security for full details. Key poin
 
 ## Roadmap
 
-- **Today**: v0.2.6 — 13 tools, listed on the MCP Registry, pilot ongoing (5 firms)
-- **Q3 2026**: Streamable HTTP adapters (Mistral Le Chat, ChatGPT Business / Enterprise)
-- **Q4 2026**: Write tools (lettering, invoice creation) with mandatory `preview → commit` pattern
-- **Q1 2027**: Multi-dossier mode (Firm API Token instead of Company Token)
+- **Today**: v0.2.7 — 13 read-only tools, listed on the MCP Registry, pilot ongoing (5 firms)
+- **Next**: anti-hallucination guardrails that separate Pennylane facts, deterministic calculations, assumptions, limits, and recommendations
+- **Next**: official-source allowlist for accounting, tax, legal, and company-context reasoning
+- **Next**: hosted HOLCO Streamable HTTP variant for Mistral Le Chat and ChatGPT Business / Enterprise, still read-only
+- **v0.3 target**: read-only multi-dossier mode with Firm API Token instead of one Company Token per dossier
 - **Q3 2026 target**: Anthropic Connectors Directory verification (submission made)
 
 ---
@@ -129,4 +130,3 @@ Proprietary — see [`LICENSE`](LICENSE). Reverse engineering, redistribution, a
 - **Technical issues**: open a GitHub Issue on this repo
 
 HOLCO · Paris, France · https://holco.co
-
