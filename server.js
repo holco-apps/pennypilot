@@ -25,6 +25,7 @@ import { explainPennypilotFlow, explainPennypilotFlowSchema } from './lib/tools/
 import { findUnpaidInvoices, findUnpaidInvoicesSchema } from './lib/tools/find-unpaid-invoices.js';
 import { getCompanyPnl, getCompanyPnlSchema } from './lib/tools/get-company-pnl.js';
 import { generateMonthlyClose, generateMonthlyCloseSchema } from './lib/tools/generate-monthly-close.js';
+import { generateRevisionTriage, generateRevisionTriageSchema } from './lib/tools/generate-revision-triage.js';
 import { listJournals, listJournalsSchema } from './lib/tools/list-journals.js';
 import { getChartOfAccounts, getChartOfAccountsSchema } from './lib/tools/get-chart-of-accounts.js';
 import { browseAccountLedger, browseAccountLedgerSchema } from './lib/tools/browse-account-ledger.js';
@@ -43,6 +44,7 @@ const TOOLS = [
   findUnpaidInvoicesSchema,
   getCompanyPnlSchema,
   generateMonthlyCloseSchema,
+  generateRevisionTriageSchema,
   listJournalsSchema,
   getChartOfAccountsSchema,
   browseAccountLedgerSchema,
@@ -62,6 +64,7 @@ const HANDLERS = {
   find_unpaid_customer_invoices: findUnpaidInvoices,
   get_company_pnl: getCompanyPnl,
   generate_monthly_close_report: generateMonthlyClose,
+  generate_revision_triage: generateRevisionTriage,
   list_journals: listJournals,
   get_chart_of_accounts: getChartOfAccounts,
   browse_account_ledger: browseAccountLedger,

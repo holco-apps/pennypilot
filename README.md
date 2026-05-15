@@ -4,7 +4,7 @@
 
 PennyPilot is an MCP (Model Context Protocol) extension that connects Claude Desktop to your Pennylane dossiers, directly inside the conversation. It produces a complete monthly closing memo for a client dossier in 8 seconds instead of 1h30, and covers the full general ledger (journals, chart of accounts, per-account ledger view, pending lettering, audit trail) — all read-only, all local, all in plain French for the cabinet collaborator.
 
-Edited by **HOLCO**, Paris, France · v0.2.8 (restricted beta) · pilot active
+Edited by **HOLCO**, Paris, France · v0.2.9 (restricted beta) · pilot active
 
 - **Product page**: https://apps.holco.co/mcp/pennylane
 - **Pilot enrollment**: https://apps.holco.co/mcp/pennylane/cgu
@@ -57,13 +57,14 @@ Detailed procedure: [`docs/install.md`](docs/install.md)
 | `diagnose_pennypilot_setup` | Checks HOLCO key, Pennylane token, `/me` access and dossier identity without printing secrets |
 | `explain_pennypilot_flow` | Explains what happens when the user writes in Claude and when PennyPilot is called |
 
-### Thirteen accounting tools
+### Fourteen accounting tools
 
 | Tool | Role |
 |---|---|
 | `find_unpaid_customer_invoices` | Overdue customer invoices, top 3 debtors, 60-day alert |
 | `get_company_pnl` | Synthetic P&L for a month / quarter / year, comparison vs prior period, anomalies flagged |
 | `generate_monthly_close_report` | Complete monthly closing memo (KPIs, P&L commentary, AR aging, anomalous spend, vendor duplicates, prioritized cabinet actions) — 4 tones |
+| `generate_revision_triage` | **Pré-révision** (pre-revision triage) — readiness score, cycle-by-cycle blockers (411/401/charges/revenue), prepared client requests, draft review comments, strict audit trail (facts / calculations / assumptions / limits / recommendations). Read-only, copy-pasteable into Pennylane workpapers |
 | `list_journals` | Accounting journals configured on the dossier (sales / purchases / bank / general / cash) |
 | `get_chart_of_accounts` | Chart of accounts grouped by French PCG class (1–8), filterable by prefix |
 | `browse_account_ledger` | General ledger view of a single account over a period, with running balance |
@@ -78,7 +79,7 @@ Read-only by design. PennyPilot will never create, modify, delete, letter, draft
 
 ---
 
-## Context-guarded analysis (v0.2.8)
+## Context-guarded analysis (v0.2.9)
 
 The two heaviest analysis tools (`get_company_pnl`, `generate_monthly_close_report`) refuse to run without first establishing the dossier context. They auto-detect SIREN + NAF activity code via Pennylane `/me` + the official French open-data API `recherche-entreprises.api.gouv.fr` (Etalab), then ask the user a single confirmation question about seasonality and accounting particulars before producing any analysis. This avoids false-anomaly reports (e.g. revenue=0 on a seasonal retail dossier where July is naturally low).
 
@@ -118,8 +119,8 @@ See https://apps.holco.co/mcp/pennylane/docs/security for full details. Key poin
 
 ## Roadmap
 
-- **Today**: v0.2.8 — 13 read-only accounting tools + guided setup tools, listed on the MCP Registry, pilot ongoing (5 firms)
-- **Next**: **Pré-révision** (single-dossier pre-revision triage, `generate_revision_triage`) with facts, deterministic calculations, assumptions, limits, and recommendations separated
+- **Today**: v0.2.9 — Pré-révision (`generate_revision_triage`) shipped, 14 read-only accounting tools + guided setup tools, listed on the MCP Registry, pilot ongoing (5 firms)
+- **Next**: firm-token multi-dossier (`triage_portefeuille_cabinet`) — portfolio cockpit ranking all client dossiers by what needs attention today
 - **Next**: official-source allowlist for accounting, tax, legal, and company-context reasoning
 - **Next**: hosted HOLCO Streamable HTTP variant for Mistral Le Chat and ChatGPT Business / Enterprise, still read-only
 - **v0.3 target**: read-only multi-dossier mode with Firm API Token instead of one Company Token per dossier
