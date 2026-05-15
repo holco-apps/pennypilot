@@ -23,7 +23,7 @@ From your personal access page (link in the welcome email), or directly:
 - From the production CDN: https://apps.holco.co/downloads/pennypilot-0.2.9.mcpb
 - From this GitHub Release: https://github.com/holco-apps/pennypilot/releases/download/v0.2.9/pennypilot-0.2.9.mcpb
 
-Bundle SHA-256: `debff83dd46710aed88d390391e21075714db629584197260a1961fda15027dd`
+Bundle SHA-256: `891f23b26bf7a86e5882f3a63e8a27cd2f6aca794fb84eb385d5167bd30eb35f`
 
 ### 2. Drag-drop into Claude Desktop
 

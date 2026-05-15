@@ -12,8 +12,8 @@
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.8/pennypilot-0.2.8.mcpb",
-      "fileSha256": "debff83dd46710aed88d390391e21075714db629584197260a1961fda15027dd",
+      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.9/pennypilot-0.2.9.mcpb",
+      "fileSha256": "891f23b26bf7a86e5882f3a63e8a27cd2f6aca794fb84eb385d5167bd30eb35f",
       "version": "0.2.9",
       "transport": {
         "type": "stdio"
