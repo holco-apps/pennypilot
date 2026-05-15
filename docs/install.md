@@ -1,4 +1,4 @@
-# Install PennyPilot v0.2.7
+# Install PennyPilot v0.2.8
 
 Step-by-step guide for installing the PennyPilot extension inside Claude Desktop.
 
@@ -20,14 +20,14 @@ Step-by-step guide for installing the PennyPilot extension inside Claude Desktop
 
 From your personal access page (link in the welcome email), or directly:
 
-- From the production CDN: https://apps.holco.co/downloads/pennypilot-0.2.7.mcpb
-- From this GitHub Release: https://github.com/holco-apps/pennypilot/releases/download/v0.2.7/pennypilot-0.2.7.mcpb
+- From the production CDN: https://apps.holco.co/downloads/pennypilot-0.2.8.mcpb
+- From this GitHub Release: https://github.com/holco-apps/pennypilot/releases/download/v0.2.8/pennypilot-0.2.8.mcpb
 
-Bundle SHA-256: `ad40734f0f5db33db86e989f6fbfa72237b3d0be41773a2647f5467db95434d0`
+Bundle SHA-256: `cbd2fee0519340c6e3dea5c9c2fd235f4ffefd42575c75b49d78cea16d87f0a3`
 
 ### 2. Drag-drop into Claude Desktop
 
-- Drag the `pennypilot-0.2.7.mcpb` file onto the Claude Desktop window, OR
+- Drag the `pennypilot-0.2.8.mcpb` file onto the Claude Desktop window, OR
 - Settings → MCP Extensions → Install Extension → select the file
 
 #### ⚠️ Anthropic warning at install
@@ -64,15 +64,26 @@ Both values are stored as **Claude Desktop environment variables** on your works
 Open a **new conversation** in Claude Desktop and start with:
 
 ```
-PennyPilot, what can you do?
+PennyPilot, verify my installation.
 ```
 
-(works in French too: *« PennyPilot, que peux-tu faire ? »*)
+(recommended in French: *« PennyPilot, vérifie mon installation. »*)
 
-PennyPilot introduces itself, lists its 13 tools, and suggests questions to ask about your dossier. This is the best entry point.
+PennyPilot checks the HOLCO key, Pennylane token, `/me` access and detected dossier without printing secrets.
+
+Then run:
+
+```
+PennyPilot, start.
+```
+
+(French: *« PennyPilot, démarre. »*)
+
+PennyPilot explains read-only mode and suggests the first questions to ask about your dossier.
 
 Then try real questions like:
 
+- *"PennyPilot, what can you do?"* / *"PennyPilot, que peux-tu faire ?"*
 - *"Generate the monthly close memo for May 2026"* / *"Génère la note de synthèse de mai 2026 pour mon dossier"*
 - *"Which customer invoices are over 60 days overdue?"* / *"Quelles factures clients sont en retard de plus de 60 jours ?"*
 - *"Show me Q1 P&L"* / *"Donne-moi le P&L du dernier trimestre"*
@@ -85,9 +96,9 @@ First response in 6–10 seconds (the full monthly close memo takes ~8 s on a me
 
 If you're not sure it's working, ask Claude:
 
-> *"PennyPilot, what tools do you have?"*
+> *"PennyPilot, verify my installation."*
 
-The `about_pennypilot` tool returns a welcome card listing 13 tools. If nothing shows up: **Claude Desktop → Settings → MCP Extensions** — check that PennyPilot is listed and **Enabled**.
+The `diagnose_pennypilot_setup` tool returns an OK / warning / blocked status. If nothing shows up: **Claude Desktop → Settings → MCP Extensions** — check that PennyPilot is listed and **Enabled**.
 
 ---
 

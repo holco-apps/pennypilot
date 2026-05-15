@@ -2,19 +2,19 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.holco-apps/pennypilot",
   "title": "PennyPilot",
-  "description": "Read-only AI copilot for French accounting firms on Pennylane. Monthly close memo in 8s.",
+  "description": "Read-only AI copilot for French accounting firms on Pennylane. Guided setup + tools.",
   "repository": {
     "url": "https://github.com/holco-apps/pennypilot",
     "source": "github"
   },
   "websiteUrl": "https://apps.holco.co/mcp/pennylane",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.7/pennypilot-0.2.7.mcpb",
-      "fileSha256": "ad40734f0f5db33db86e989f6fbfa72237b3d0be41773a2647f5467db95434d0",
-      "version": "0.2.7",
+      "identifier": "https://github.com/holco-apps/pennypilot/releases/download/v0.2.8/pennypilot-0.2.8.mcpb",
+      "fileSha256": "cbd2fee0519340c6e3dea5c9c2fd235f4ffefd42575c75b49d78cea16d87f0a3",
+      "version": "0.2.8",
       "transport": {
         "type": "stdio"
       }
